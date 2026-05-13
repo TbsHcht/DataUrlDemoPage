@@ -85,8 +85,13 @@
       eingebettet – kein separater Server-Request nötig.
     </p>
     <a id="download-link" class="btn" download="demo.pdf">
-      ⬇️ PDF herunterladen
+      ⬇️ PDF herunterladen (gültig)
     </a>
+
+    <a id="broken-link" class="btn btn-broken" download="broken.pdf" style="margin-top: 12px; background: #e53e3e;">
+      ⬇️ PDF herunterladen (kaputt)
+    </a>
+
     <p class="meta">
       Die Datei existiert ausschließlich als Data URL im HTML-Dokument.
     </p>
@@ -97,6 +102,10 @@
 
     const dataUrl = "data:application/pdf;base64," + base64;
     document.getElementById("download-link").href = dataUrl;
+
+    // Intentionally broken: invalid base64 payload
+    const brokenDataUrl = "data:application/pdf;base64,DIESISTKEINVALIDESBASE64=====KAPUTT!!";
+    document.getElementById("broken-link").href = brokenDataUrl;
   </script>
 </body>
 </html>
